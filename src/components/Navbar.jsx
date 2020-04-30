@@ -4,20 +4,11 @@ import _ from "lodash";
 import Upload from "./Upload";
 
 export default function Navbar(props) {
-  const changeView = props.changeView;
-  const view = props.view;
-
-  function selectView() {
-    if (view === "all") {
-      changeView("single");
-    } else changeView("all");
-  }
-
+  // props => className="navText" name="Home"
   return (
     <div className="navbar">
       <h1 className="navbar-header">{props.home}</h1>
-      <button onClick={selectView}>Select ALL or SINGLE</button>
-      <Upload text="Upload" />
+      <Upload changeView={props.changeView} view={props.view} />
     </div>
   );
 }
