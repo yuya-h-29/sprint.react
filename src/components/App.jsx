@@ -16,7 +16,6 @@ export default function App() {
       setView(allOrSingle);
     } else if (allOrSingle === "single") {
       console.log("should be single => ", allOrSingle);
-
       setView(allOrSingle);
     }
   };

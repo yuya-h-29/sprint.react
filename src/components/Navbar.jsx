@@ -17,7 +17,6 @@ export default function Navbar(props) {
     <div className="navbar">
       <h1 className="navbar-header">{props.home}</h1>
       <button onClick={selectView}>Select ALL or SINGLE</button>
-
       <Upload text="Upload" />
     </div>
   );
