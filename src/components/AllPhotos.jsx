@@ -2,9 +2,13 @@ import React from "react";
 import _ from "lodash";
 
 export default function AllPhotos(props) {
-  return (
-    <div>
-      <h1>Yes we are getting this</h1>
-    </div>
-  );
+  if (props.view === "all") {
+    return (
+      <div>
+        <div>{props.view}</div>
+        <div style={{ display: "none" }}></div>
+      </div>
+    );
+  }
+  return <div></div>;
 }
