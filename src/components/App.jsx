@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/styles.css";
 import Navbar from "./Navbar";
 import AllPhotos from "./AllPhotos";
@@ -9,24 +9,18 @@ export default function App() {
   const [photo, setPhoto] = useState([]);
   const [selectedPhoto, setSelectedPhoto] = useState("selectedPhoto");
 
-  const pictures = listObjects();
-  // console.log(pictures.then((data) => console.log(data[0])));
-
-  const showAllPictures = pics => {
+  const getAllPictures = pics => {
     pics.then(data => {
       return data.forEach(picture => {
-        console.log(picture.Key);
-        // setPhoto(photo.push(picture.Key));
+        setPhoto(photo => [...photo, picture.Key]);
       });
     });
   };
 
-  showAllPictures(pictures);
-  console.log("all", photo);
-
-  //react.sprint
-  //ap-northeast-1
-  //https://s3-ap-northeast-1.amazonaws.com/react.sprint/codechysalislogo.gif
+  useEffect(() => {
+    const pictures = listObjects();
+    getAllPictures(pictures);
+  }, []);
 
   const changeView = input => {
     if (input === "all") {
@@ -35,8 +29,6 @@ export default function App() {
       setView("all");
     }
   };
-
-  // https://stackoverflow.com/questions/33600196/showing-images-stored-in-s3-bucket
 
   return (
     <body>
@@ -47,15 +39,10 @@ export default function App() {
           view={view}
           changeView={changeView}
         />
-        <AllPhotos view={view} />
         <h1>{view}</h1>
-        <img
-          src="https://s3-ap-northeast-1.amazonaws.com/react.sprint/codechysalislogo.gif"
-          alt="sample"
-        />
+        <AllPhotos view={view} photo={photo} />
         <h1>
           <listObjects />
-          fafasfsfasfafasfafsafsssss
         </h1>
       </div>
     </body>
