@@ -14,11 +14,6 @@ export default function App() {
     const arrOfPicFiles = pictures.map(picture => picture.Key);
     const toBase64 = await Promise.all(
       arrOfPicFiles.map(picFile => getSingleObject(picFile))
-    ).then(result =>
-      result.map(picData => {
-        // console.log(picData);
-        return "data:image/jpg;base64," + picData;
-      })
     );
     return setPhoto(toBase64);
   }
