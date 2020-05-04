@@ -4,6 +4,7 @@ import _ from "lodash";
 import Upload from "./Upload";
 
 export default function Navbar(props) {
+  //adding commnt
   // props => className="navText" name="Home"
   return (
     <div className="navbar">
